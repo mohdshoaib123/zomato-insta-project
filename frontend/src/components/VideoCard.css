@@ -1,0 +1,102 @@
+.video-actions {
+  position: absolute;
+  right: 20px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 15;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-item .icon {
+  font-size: 100px;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.action-item:hover .icon {
+  transform: scale(1.15);
+}
+
+.action-item.liked .icon {
+  animation: heartBeat 0.4s ease;
+}
+
+.action-item.saved .icon {
+  animation: bookmarkBounce 0.4s ease;
+}
+
+.action-item .count {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes bookmarkBounce {
+  0% {
+    transform: scale(1) rotateZ(0deg);
+  }
+  50% {
+    transform: scale(1.3) rotateZ(-10deg);
+  }
+  100% {
+    transform: scale(1.15) rotateZ(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .video-actions {
+    right: 15px;
+    bottom: 90px;
+    gap: 15px;
+  }
+
+  .action-item .icon {
+    font-size: 28px;
+  }
+
+  .action-item .count {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-actions {
+    right: 12px;
+    bottom: 80px;
+    gap: 12px;
+  }
+
+  .action-item .icon {
+    font-size: 24px;
+  }
+
+  .action-item .count {
+    font-size: 11px;
+  }
+}

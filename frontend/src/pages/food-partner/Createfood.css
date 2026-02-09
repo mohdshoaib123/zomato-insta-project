@@ -1,0 +1,388 @@
+/* ===== Mobile First Approach ===== */
+
+/* Container */
+.create-food-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #999999 0%, #666666 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Card */
+.create-food-card {
+  width: 100%;
+  background-color: #fffaf0;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header */
+.create-food-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.create-food-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.create-food-header p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Form */
+.create-food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Text Input */
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #d1d5db;
+  font-size: 16px;
+  color: #1f2937;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input::placeholder {
+  color: #6b7280;
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: #e5e7eb;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+}
+
+/* Textarea */
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #d1d5db;
+  font-size: 16px;
+  color: #1f2937;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  transition: all 0.3s ease;
+}
+
+.form-textarea::placeholder {
+  color: #6b7280;
+}
+
+.form-textarea:focus {
+  outline: none;
+  background-color: #e5e7eb;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+}
+
+/* Video Input Wrapper */
+.video-input-wrapper {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+  border: 2px dashed #9ca3af;
+  border-radius: 16px;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 200px;
+}
+
+.video-input-wrapper:hover {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-color: #6b7280;
+  box-shadow: 0 10px 25px -5px rgba(75, 85, 99, 0.15);
+  transform: translateY(-2px);
+}
+
+.video-input-wrapper.uploaded {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-color: #10b981;
+}
+
+.video-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.video-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Upload Icon */
+.video-upload-icon {
+  width: 48px;
+  height: 48px;
+  color: #6b7280;
+  stroke-width: 2;
+  animation: bounce 2s infinite;
+}
+
+/* Check Icon (when file selected) */
+.video-check-icon {
+  width: 64px;
+  height: 64px;
+  color: #10b981;
+  stroke-width: 3;
+  animation: slideDown 0.4s ease;
+}
+
+/* Upload Text */
+.video-upload-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.video-upload-hint {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.video-upload-format {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* File Name (when uploaded) */
+.video-file-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #059669;
+  margin: 0;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.video-file-size {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  height: 48px;
+  margin-top: 12px;
+  background-color: #4b5563;
+  color: #fef3c7;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  background-color: #d1d5db;
+  color: #1f2937;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== Tablet/Medium Screens (768px and above) ===== */
+@media (min-width: 768px) {
+  .create-food-container {
+    padding: 40px 20px;
+  }
+
+  .create-food-card {
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .create-food-header h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .create-food-header p {
+    font-size: 16px;
+  }
+
+  .create-food-form {
+    gap: 24px;
+  }
+
+  .form-group {
+    gap: 10px;
+  }
+
+  .form-group label {
+    font-size: 15px;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 16px;
+  }
+
+  .form-textarea {
+    min-height: 150px;
+  }
+
+  .video-input-wrapper {
+    min-height: 240px;
+    padding: 40px 24px;
+  }
+
+  .video-upload-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .video-check-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .video-upload-text {
+    font-size: 20px;
+  }
+
+  .submit-btn {
+    height: 52px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+}
+
+/* ===== Desktop/Large Screens (1024px and above) ===== */
+@media (min-width: 1024px) {
+  .create-food-card {
+    width: 600px;
+    padding: 48px;
+  }
+
+  .create-food-header h2 {
+    font-size: 32px;
+  }
+
+  .create-food-form {
+    gap: 28px;
+  }
+
+  .form-input,
+  .video-input-wrapper {
+    height: auto;
+  }
+
+  .form-textarea {
+    min-height: 180px;
+  }
+
+  .video-input-wrapper {
+    min-height: 260px;
+    padding: 48px 32px;
+  }
+
+  .video-upload-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .video-check-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .video-upload-text {
+    font-size: 22px;
+  }
+
+  .submit-btn {
+    height: 56px;
+    font-size: 16px;
+  }
+}

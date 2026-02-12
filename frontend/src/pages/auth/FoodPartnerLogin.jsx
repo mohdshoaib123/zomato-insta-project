@@ -13,6 +13,7 @@ function FoodPartnerLogin() {
     const payload={email:partnerData.email,password:partnerData.password}
     const response=await axios.post("http://localhost:8080/api/auth/foodpartner/login",payload,{withCredentials:true})
    console.log(response)
+  
    navigate("/create-food")
   }
   return (

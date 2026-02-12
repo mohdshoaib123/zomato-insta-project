@@ -36,16 +36,13 @@ async function createFood(req,res){
 
   if(isLiked){
     await Like.findByIdAndDelete(isLiked._id)
-    await Food.findByIdAndUpdate(foodId,{$inc:{likecount:-1}})
-   return res.status(200).json({message:"food item unLiked successfully",})
-  
-
-
+    await Food.findByIdAndUpdate(foodId,{$inc:{likeCount:-1},isLiked:false})
+   return res.status(200).json({message:"food item unLiked successfully",like:false})
   }
   const like=new Like({food:foodId,user:user}) 
   await like.save()
-  await Food.findByIdAndUpdate(foodId,{$inc:{likeCount:1}})
-  res.status(200).json({message:"food item liked successfully",like:like}) 
+  await Food.findByIdAndUpdate(foodId,{$inc:{likeCount:1},isLiked:true})
+  res.status(200).json({message:"food item liked successfully",like:true}) 
  }
 
 
@@ -55,11 +52,13 @@ async function createFood(req,res){
   const isSaved=await Save.findOne({food:foodId,user:user._id})
   if(isSaved){
     await Save.findByIdAndDelete(isSaved._id)
+    await Food.findByIdAndUpdate(foodId,{isSaved:false})
    return res.status(200).json({message:"food item unsaved successfully"})
   }
   const save1=new Save({food:foodId,user:user})
   await save1.save()
-  res.status(200).json({message:"food item saved successfully",isSave:"save"})    
+  await Food.findByIdAndUpdate(foodId,{isSaved:true})
+  res.status(200).json({message:"food item saved successfully",isSave:true})    
  }
  async function getSavedFoodItems(req,res){
   const user=req.user

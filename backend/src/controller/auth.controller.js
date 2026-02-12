@@ -86,7 +86,7 @@ async function logoutUser(req,res) {
 
 
 async function registerFoodPartner(req,res){
-  if(!req.body){console.log("empty req body")}
+  if(!req.body){}
   const {name,email,password}=req.body
   const isFoodPartnerExist=await Foodpartner.findOne({email:email})
   if(isFoodPartnerExist){
@@ -113,6 +113,7 @@ async function registerFoodPartner(req,res){
 }
 
 async function loginFoodPartner(req,res){
+  console.log(req.body)
   const{email,password}=req.body
   const foodPartner= await Foodpartner.findOne({email:email})
 

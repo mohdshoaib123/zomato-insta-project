@@ -20,6 +20,12 @@ foodPartner:{
 likeCount:{
   type:Number,
   default:0
-}})
+},
+isLiked:{
+  type:Boolean,
+  default:false
+},
+isSaved:{type:Boolean, default:false }
+})
 const Food=mongoose.model('Food',foodSchema)
 module.exports=Food

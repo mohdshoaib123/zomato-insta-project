@@ -10,8 +10,8 @@ function Home() {
   const navigate=useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [videos, setVideos] = useState([])
-  const[isLiked,setIsLiked]=useState(false)
-  const[isSaved,setIsSaved]=useState(false)
+  
+  
   
   const containerRef = useRef(null)
   const scrollTimeoutRef = useRef(null)
@@ -82,17 +82,17 @@ function Home() {
   const handleLike = async (foodId) => {
     const response =await axios.post('http://localhost:8080/api/food/like',{foodId},{withCredentials:true})
     if(response.data.like){
-      setIsLiked(true)
+    
       setVideos((pre)=>
         
-        pre.map((v)=>(v._id===foodId?{...v,likeCount:v.likeCount+1}:v))
+        pre.map((v)=>(v._id===foodId?{...v,likeCount:v.likeCount+1,isLiked:true}:v))
       )}
       else{
-        setIsLiked(false)
+        
         setVideos((pre)=>
 
         
-          pre.map((v)=>(v._id===foodId?{...v,likeCount:v.likeCount-1}:v))
+          pre.map((v)=>(v._id===foodId?{...v,likeCount:v.likeCount-1,isLiked:false}:v))
         )
       }
     } 
@@ -107,10 +107,18 @@ function Home() {
    const response= await axios.post("http://localhost:8080/api/food/save",{foodId},{withCredentials:true})
    
    if(response.data.isSave){
-    setIsSaved(true)
+    setVideos((pre)=>
+      
+      pre.map((v)=>(v._id===foodId?{...v,isSaved:true}:v))
+    )   
+  
    }
    else{
-    setIsSaved(false)
+    setVideos((pre)=>
+      
+      pre.map((v)=>(v._id===foodId?{...v,isSaved:false}:v))
+    ) 
+    
    }
    
     }
@@ -149,11 +157,11 @@ function Home() {
 
             <VideoCard
               video={videoOne}
-               isLiked={isLiked}
+               isLiked={videoOne.isLiked}
               likeCount={videoOne.likeCount}
               onLike={handleLike}
               onSave={handleSave}
-              isSaved={isSaved}
+              isSaved={videoOne.isSaved}
               onComment={handleComment}
             />
           </div>

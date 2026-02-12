@@ -21,7 +21,9 @@ const handleInput=(e)=>{
     data.append("video",formData.video)
    const response=await axios.post('http://localhost:8080/api/food/',data,{withCredentials:true})
    console.log(response.data)
-   navigate("/")
+   alert("Food item created successfully")
+   setFormData({name:'',description:'',video:null})
+   navigate("/create-food")
   }
   const handleInputVideo=(e)=>{
     setFormData((pre)=>({...pre,video:e.target.files[0]}))}
